@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { hot } from 'react-hot-loader/root';
 
-import RSP from './RSP.jsx';
+import Lotto from './Lotto.jsx';
 
-const Hot = hot(RSP);
+const Hot = hot(Lotto);
 
 ReactDom.render(<Hot />, document.querySelector('#root'));
