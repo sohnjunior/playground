@@ -1,0 +1,32 @@
+.todo-list {
+  width: 500px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); 
+  margin: 200px 0px 0px 400px;
+}
+
+.title {
+  background: #bac8ff;
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.menu {
+  background-color: #f1f3f5;
+}
+
+.input {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.todo {
+  text-align: center;
+  font-size: 1rem;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
