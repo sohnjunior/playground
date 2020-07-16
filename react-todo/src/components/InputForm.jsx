@@ -1,11 +1,12 @@
 import React from 'react';
 import '../App.css'
 
-const InputForm = () => {
+const InputForm = ({ focus, todo, setTodo, setClick }) => {
+
   return (
     <div className="input">
-      <input type="text"/>
-      <button>추가</button>
+      <input ref={focus} type="text" value={todo} onChange={(e) => setTodo(e.target.value)}/>
+      <button onClick={() => setClick(true)}> 추가 </button>
     </div>
   );
 };

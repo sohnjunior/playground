@@ -1,11 +1,11 @@
 import React from 'react';
 import '../App.css'
 
-const Todo = () => {
+const Todo = ({ item }) => {
   return (
-    <div className="todo">
-      할 일 입니다.
-    </div>
+    <td className="todo">
+      {item}
+    </td>
   );
 };
 

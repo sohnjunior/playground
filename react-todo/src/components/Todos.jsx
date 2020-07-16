@@ -2,9 +2,13 @@ import React from 'react';
 import Todo from './Todo';
 
 
-const Todos = () => {
+const Todos = ({ todoList }) => {
   return (
-    <Todo />
+    <table>
+      <tbody>
+        { todoList.map( (todo, i) => <tr key={i + todo}><Todo item={todo}/></tr> ) }
+      </tbody>
+    </table>
   );
 };
 
