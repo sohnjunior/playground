@@ -14,6 +14,12 @@ const TodoList = () => {
   const mounted = useRef(false);
   const focus = useRef(null);
 
+  const handleRemove = (idx) => {
+    const newList = [...todoList];
+    newList.splice(idx, 1);
+    setTodoList(newList);
+  };
+
   // useEffect 를 활용하여 자식 컴포넌트에서 클릭 이벤트 발생 시 새로운 글 추가
   useEffect(() => {
     if (!mounted.current) {
@@ -34,7 +40,7 @@ const TodoList = () => {
       <Title />
       <Menu />
       <InputForm focus={focus} todo={todo} setTodo={setTodo} setClick={setClick}/>
-      <Todos todoList={todoList}/>
+      <Todos todoList={todoList} removeTodo={handleRemove} />
     </div>
   );
 };

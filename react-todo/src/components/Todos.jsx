@@ -2,11 +2,11 @@ import React from 'react';
 import Todo from './Todo';
 
 
-const Todos = ({ todoList }) => {
+const Todos = ({ todoList, removeTodo }) => {
   return (
     <table>
       <tbody>
-        { todoList.map( (todo, i) => <tr key={i + todo}><Todo item={todo}/></tr> ) }
+        {todoList.map((todo, i) => <tr key={i + todo}><Todo index={i} item={todo} removeTodo={removeTodo} /></tr> ) }
       </tbody>
     </table>
   );

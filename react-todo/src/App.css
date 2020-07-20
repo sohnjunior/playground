@@ -1,7 +1,7 @@
 .todo-list {
   width: 500px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); 
-  margin: 200px 0px 0px 400px;
+  margin: 200px 0px 0px 200px;
 }
 
 .title {
@@ -29,4 +29,8 @@
   font-size: 1rem;
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+.todo:hover {
+  cursor: pointer;
 }
