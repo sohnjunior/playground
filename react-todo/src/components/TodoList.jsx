@@ -45,7 +45,7 @@ const TodoList = () => {
         focus.current.focus();
       }
     }
-  }, [click, todo]);
+  }, [click, todo, fontColor]);
 
   return (
     <div className="todo-list">

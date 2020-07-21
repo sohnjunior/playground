@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
 import '../App.css'
 
 const InputForm = ({ focus, todo, setTodo, setClick }) => {
@@ -18,8 +20,23 @@ const InputForm = ({ focus, todo, setTodo, setClick }) => {
 
   return (
     <div className="input">
-      <input ref={focus} type="text" value={todo} onChange={handleOnChange} onKeyPress={handleKeyPress} />
-      <button onClick={handleClick}> 추가 </button>
+      <Input
+        ref={focus}
+        type="text"
+        value={todo}
+        onChange={handleOnChange}
+        onKeyPress={handleKeyPress}
+        placeholder="오늘 할일"
+      />
+      <Button
+        id="button"
+        variant="outlined"
+        color="primary"
+        onClick={handleClick}
+      >
+        {" "}
+        추가{" "}
+      </Button>
     </div>
   );
 };
