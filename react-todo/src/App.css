@@ -34,3 +34,7 @@
 .todo:hover {
   cursor: pointer;
 }
+
+.highlight {
+  text-decoration: line-through;
+}

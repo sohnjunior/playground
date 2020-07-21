@@ -20,6 +20,13 @@ const TodoList = () => {
     setTodoList(newList);
   };
 
+  const handleUpdate = (idx) => {
+    const newList = todoList.map((todo, i) => {
+       return i === idx ? [todo[0], !todo[1]] : todo;
+    });
+    setTodoList(newList);
+  };
+
   // useEffect 를 활용하여 자식 컴포넌트에서 클릭 이벤트 발생 시 새로운 글 추가
   useEffect(() => {
     if (!mounted.current) {
@@ -27,7 +34,7 @@ const TodoList = () => {
     } else {
       if (click) {
         // 새로운 할일 추가
-        setTodoList((prev) => [...prev, todo]);
+        setTodoList((prev) => [...prev, [todo, false]]);
         setTodo('');
         setClick(false);
         focus.current.focus();
@@ -40,7 +47,7 @@ const TodoList = () => {
       <Title />
       <Menu />
       <InputForm focus={focus} todo={todo} setTodo={setTodo} setClick={setClick}/>
-      <Todos todoList={todoList} removeTodo={handleRemove} />
+      <Todos todoList={todoList} removeTodo={handleRemove} updateTodo={handleUpdate} />
     </div>
   );
 };
