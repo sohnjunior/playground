@@ -1,7 +1,7 @@
 .todo-list {
   width: 500px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); 
-  margin: 200px 0px 0px 200px;
+  margin: 100px auto;
 }
 
 .title {
@@ -16,7 +16,9 @@
 
 .menu {
   background-color: #f1f3f5;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .input {
@@ -29,10 +31,16 @@
   margin-left: 40px;
 }
 
+.table {
+  width: 100%;
+}
+
 .todo {
-  font-size: 1rem;
+  font-size: 1.2rem;
   padding-top: 15px;
   padding-bottom: 15px;
+  text-align: center;
+  width: 70%;
 }
 
 .todo:hover {
@@ -40,6 +48,7 @@
 }
 
 .highlight {
+  color: grey !important;
   text-decoration: line-through;
 }
 
