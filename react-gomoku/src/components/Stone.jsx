@@ -4,7 +4,7 @@ import '../App.css';
 
 const Stone = ({ state }) => {
   return (
-    <div>
+    <>
       {
         state === -1 
         ? '' 
@@ -12,7 +12,7 @@ const Stone = ({ state }) => {
         ? <div className="black-stone" /> 
         : <div className="white-stone" />
       }
-    </div>
+    </>
   )
 };
 
