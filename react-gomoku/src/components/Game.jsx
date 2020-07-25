@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react';
 import Board from './Board';
 import Info from './Info';
+import MessageBox from './MessageBox';
 
 
 export const GAME_START = 'GAME_START';
@@ -53,6 +54,7 @@ const Game = () => {
   return (
     <>
       <Board state={state} dispatch={dispatch} />
+      <MessageBox state={state} dispatch={dispatch} />
       <Info ready={state.ready} turn={state.turn} dispatch={dispatch} />
     </>
   )
