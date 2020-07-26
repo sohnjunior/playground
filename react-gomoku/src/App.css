@@ -34,6 +34,7 @@
 .timer {
   text-align: center;
   margin: 0 auto;
+  margin-top: 20px;
   font-size: 1.6rem;
 }
 
@@ -71,4 +72,17 @@
 
 .button:hover {
   cursor: pointer;
+}
+
+.turn {
+  position: relative;
+  left: 50px;
+  top: 10px;
+}
+
+.winner {
+  position: relative;
+  top: 30px;
+  left: 35px;
+  font-size: 1.7rem;
 }
