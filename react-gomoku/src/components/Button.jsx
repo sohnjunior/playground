@@ -1,9 +1,9 @@
 import React from 'react';
 import '../App.css';
 
-const Button = ({ handleClick, children, disabled = false }) => {
+const Button = ({ handleClick, children }) => {
   return (
-    <button className="button" onClick={handleClick} disabled={disabled}>
+    <button className="button" onClick={handleClick}>
       { children }
     </button>
   )

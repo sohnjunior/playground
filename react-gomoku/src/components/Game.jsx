@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import judgement from '../utils';
 import Board from './Board';
 import Info from './Info';
 import MessageBox from './MessageBox';
@@ -11,6 +12,7 @@ export const RESET_BOARD = "RESET_BOARD";
 
 
 const initialState = {
+  winner: -1,  // 0: 검은돌  1: 흰돌  2: 무승부
   ready: true,
   turn: 0,  // 0: 검은돌  1: 흰돌
   board: new Array(10).fill(null).map((_) => new Array(10).fill(-1)),
@@ -21,7 +23,7 @@ const reducer = (state, action) => {
   switch (action.type) {
     case GAME_START: {
       // 게임 시작!!!
-      return { ...state, ready: false };
+      return { ...state, winner: -1, ready: false };
     }
     case UPDATE_BOARD: {
       // 2D array 갱신
@@ -29,6 +31,13 @@ const reducer = (state, action) => {
       const newBoard = [...state.board];
       newBoard[row] = [...newBoard[row]];
       newBoard[row][col] = state.turn;
+
+      // 만약 승부가 난다면 게임을 종료합니다
+      const result = judgement(newBoard, row, col);
+      if (result === 'WIN' || result === 'DRAW') {
+        const winner = result === 'DRAW' ? 2 : state.turn;
+        return { ...state, winner, board: newBoard };
+      } 
 
       return { ...state, board: newBoard };
     }
@@ -40,7 +49,7 @@ const reducer = (state, action) => {
     case RESET_BOARD: {
       // 게임판 초기화
       const newBoard = new Array(10).fill(null).map((_) => new Array(10).fill(-1));
-      return { ready: true, turn: 0, board: newBoard };
+      return { winner: -1, ready: true, turn: 0, board: newBoard };
     }
     default: {
       throw new Error("unexpected error");
@@ -55,7 +64,7 @@ const Game = () => {
     <>
       <Board state={state} dispatch={dispatch} />
       <MessageBox state={state} dispatch={dispatch} />
-      <Info ready={state.ready} turn={state.turn} dispatch={dispatch} />
+      <Info state={state} dispatch={dispatch} />
     </>
   )
 };
