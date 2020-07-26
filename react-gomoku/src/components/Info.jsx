@@ -1,15 +1,15 @@
 import React from 'react';
 import '../App.css';
 import RestartButton from './ControlButton';
+import BackButton from './BackButton';
 
 
 
 const Info = ({ state, dispatch }) => {
   return (
     <div className="info">
-      <div>
-        <RestartButton ready={state.ready} dispatch={dispatch} />
-      </div>
+      <RestartButton ready={state.ready} dispatch={dispatch} />
+      <BackButton state={state} dispatch={dispatch} />
     </div>
   );
 };

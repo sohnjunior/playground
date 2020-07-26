@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { UPDATE_BOARD, UPDATE_TURN } from './Game';
+import { fixedDigit } from '../utils';
+import { AccessAlarmOutlined } from '@material-ui/icons';
 import '../App.css';
 
 
@@ -18,8 +20,8 @@ const Timer = ({ state, dispatch }) => {
       setSec(0);
     }
 
-    // 게임이 시작된 이후에만 타이머 가동
-    if (!state.ready) {
+    // 승자가 없고 게임이 시작된 이후에만 타이머 가동
+    if (!state.ready && state.winner === -1) {
       timerId.current = setInterval(() => {
         setMin(parseInt(time.current / 60));
         setSec(time.current % 60);
@@ -52,9 +54,9 @@ const Timer = ({ state, dispatch }) => {
 
   return (
     <div className="timer">
-      {min} 분 {sec} 초
+      <AccessAlarmOutlined /> {fixedDigit(min, 2)} : {fixedDigit(sec, 2)}
     </div>
-  )
+  );
 };
 
 export default Timer;

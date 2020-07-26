@@ -14,8 +14,8 @@ const ControlButton = ({ ready, dispatch }) => {
   };
 
   return (
-    <Button handleClick={handleClick}>
-      { ready ? '게임시작!' : '다시하기' }
+    <Button ready={ready} handleClick={handleClick}>
+      { ready ? '게임 시작!' : '게임 초기화' }
     </Button>
   )
 };

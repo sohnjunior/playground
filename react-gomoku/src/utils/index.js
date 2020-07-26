@@ -67,4 +67,19 @@ function win(board, R, C, px, py, mv) {
   return 0;
 }
 
+/**
+ * 숫자를 n 자리수로 만들어서 문자열로 반환합니다. 부족한 곳은 0으로 채웁니다.
+ * @param {*} number 검사할 숫자
+ * @param {*} n 고정 자리수
+ */
+
+export function fixedDigit(number, n) {
+  let pivot = number.toString();
+
+  if (pivot.length >= n) return number;
+
+  return new Array(n - pivot.length + 1).join('0') + pivot;
+}
+
+
 export default judgement;

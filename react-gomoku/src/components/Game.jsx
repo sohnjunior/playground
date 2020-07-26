@@ -9,6 +9,7 @@ export const GAME_START = 'GAME_START';
 export const UPDATE_BOARD = "UPDATE_BOARD";
 export const UPDATE_TURN = "UPDATE_TURN";
 export const RESET_BOARD = "RESET_BOARD";
+export const GO_BACK = "GO_BACK";
 
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
   ready: true,
   turn: 0,  // 0: 검은돌  1: 흰돌
   board: new Array(10).fill(null).map((_) => new Array(10).fill(-1)),
+  history: [],
 };
 
 
@@ -23,10 +25,10 @@ const reducer = (state, action) => {
   switch (action.type) {
     case GAME_START: {
       // 게임 시작!!!
-      return { ...state, winner: -1, ready: false };
+      return { ...state, winner: -1, ready: false, history: [] };
     }
     case UPDATE_BOARD: {
-      // 2D array 갱신
+      // 바둑돌 놓은 후 게임판 갱신
       const { row, col } = action.coordinate;
       const newBoard = [...state.board];
       newBoard[row] = [...newBoard[row]];
@@ -39,7 +41,7 @@ const reducer = (state, action) => {
         return { ...state, winner, board: newBoard };
       } 
 
-      return { ...state, board: newBoard };
+      return { ...state, board: newBoard, history: [...state.history, newBoard] };
     }
     case UPDATE_TURN: {
       // 순서 변경
@@ -49,7 +51,15 @@ const reducer = (state, action) => {
     case RESET_BOARD: {
       // 게임판 초기화
       const newBoard = new Array(10).fill(null).map((_) => new Array(10).fill(-1));
-      return { winner: -1, ready: true, turn: 0, board: newBoard };
+      return { winner: -1, ready: true, turn: 0, board: newBoard, history: [] };
+    }
+    case GO_BACK: {
+      const flipped = state.turn ^ 1;
+      const newHistory = [...state.history].slice(0, state.history.length - 1);
+      const newBoard = newHistory.length
+        ? newHistory[newHistory.length - 1]
+        : new Array(10).fill(null).map((_) => new Array(10).fill(-1));
+      return { ...state, turn: flipped, board: newBoard, history: newHistory };
     }
     default: {
       throw new Error("unexpected error");
