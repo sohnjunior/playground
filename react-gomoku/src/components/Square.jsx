@@ -24,4 +24,4 @@ const Square = ({ row, col, state, dispatch }) => {
 };
 
 
-export default Square;
+export default React.memo(Square);

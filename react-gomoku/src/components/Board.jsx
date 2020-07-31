@@ -9,9 +9,11 @@ const Board = ({ state, dispatch }) => {
 
   return (
     <table className="board">
+      <tbody>
       {[...Array(squareSize.current)].map((_, i) => (
         <BoardRow key={i} squareSize={squareSize.current} row={i} state={state} dispatch={dispatch} />
       ))}
+      </tbody>
     </table>
   );
 };

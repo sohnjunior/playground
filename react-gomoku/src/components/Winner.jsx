@@ -19,4 +19,4 @@ const Winner = ({ state }) => {
 };
 
 
-export default Winner;
+export default React.memo(Winner);

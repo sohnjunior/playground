@@ -21,4 +21,4 @@ const ControlButton = ({ ready, dispatch }) => {
 };
 
 
-export default ControlButton;
+export default React.memo(ControlButton);

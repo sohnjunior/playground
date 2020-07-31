@@ -13,4 +13,4 @@ const BoardRow = ({ squareSize, row, state, dispatch }) => {
 };
 
 
-export default BoardRow;
+export default React.memo(BoardRow);
